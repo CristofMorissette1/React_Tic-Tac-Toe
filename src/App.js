@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 
 class App extends Component {
   render(){
     return (
-      <h1>Hello</h1>
+      <div className='container'>
+        <h1>Tic Tac Toe App</h1>
+        <div className='board'>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+          <div className='box'>X</div>
+        </div>
+      </div>
   );
 }
 }
