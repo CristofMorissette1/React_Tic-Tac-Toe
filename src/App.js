@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import { animationFrameScheduler } from 'rxjs';
+
 
 class App extends Component {
   constructor(props){
@@ -12,12 +12,12 @@ class App extends Component {
     }
   }
 
-  gameReset = () => {
-    let winner = this.state.winner
+  gameReset = (index) => {
+    let winner = this.state.winner;
     if (winner === true) {
-      
       this.setState({
-        winner: false
+        winner: false,
+        board: Array(9).fill(null)
       })
     }
   }
@@ -27,7 +27,6 @@ class App extends Component {
     winLines.forEach(line => {
       const [a, b, c] = line
       if (this.state.board[a] && this.state.board[a] === this.state.board[b] && this.state.board[a] === this.state.board[c]) {
-        alert('you won');
         this.setState({
           winner: true
         })
