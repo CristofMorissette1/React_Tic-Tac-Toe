@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import './css/App.css';
+import { animationFrameScheduler } from 'rxjs';
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
       board: Array(9).fill(null),
-      player: 'X'
+      player: 'X',
+      winner: false
+    }
+  }
+
+  gameReset = () => {
+    let winner = this.state.winner
+    if (winner === true) {
+      
+      this.setState({
+        winner: false
+      })
     }
   }
 
@@ -16,6 +28,9 @@ class App extends Component {
       const [a, b, c] = line
       if (this.state.board[a] && this.state.board[a] === this.state.board[b] && this.state.board[a] === this.state.board[c]) {
         alert('you won');
+        this.setState({
+          winner: true
+        })
       }
     })
   }
@@ -37,6 +52,7 @@ class App extends Component {
     const Box = this.state.board.map((box, index) => <div className='box' key={index} onClick={() => this.handleClick(index)}>{box}</div>)
     return (
       <div className='container'>
+        <button value='reset' onClick={this.gameReset}>Reset</button>
         <h1>Tic Tac Toe App</h1>
         <div className='board'>
           {Box}
